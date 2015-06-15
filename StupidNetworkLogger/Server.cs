@@ -23,7 +23,7 @@ namespace NetworkLogger {
             this.listenThread.Start();
             conn = new SQLiteConnection(loc).OpenAndReturn();
             var table = "create table if not exists log (recv integer, message text);";
-            Debug.WriteLine("Exec: " + table);
+            Console.WriteLine("Exec: " + table);
             SQLiteCommand cmd = new SQLiteCommand(table, conn);
             cmd.ExecuteNonQueryAsync();
         }
@@ -35,7 +35,7 @@ namespace NetworkLogger {
             text.Append(", \"");
             text.Append(msg);
             text.Append("\");");
-            Debug.WriteLine("Exec: " + text.ToString());
+            Console.WriteLine("Exec: " + text.ToString());
 
             SQLiteCommand cmd = new SQLiteCommand(text.ToString(), conn);
             cmd.ExecuteNonQueryAsync();
